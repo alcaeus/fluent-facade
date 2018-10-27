@@ -1,0 +1,37 @@
+{
+    "name": "alcaeus/fluent-facade",
+    "description": "Library to create fluent interfaces for classes that don't use them",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Braun",
+            "email": "git@alcaeus.org"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "^5.0",
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alcaeus\\Fluent\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alcaeus\\Fluent\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
