@@ -1,10 +1,10 @@
 parameters:
-  level: 1
+  level: 7
   paths:
     - %rootDir%/../../../src
     # Tests currently excluded until we have an extension
     # - %rootDir%/../../../tests
 
-  includes:
-    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
-    - vendor/phpstan/phpstan-strict-rules/rules.neon
+includes:
+  - vendor/phpstan/phpstan-strict-rules/rules.neon
+  - vendor/phpstan/phpstan-deprecation-rules/rules.neon

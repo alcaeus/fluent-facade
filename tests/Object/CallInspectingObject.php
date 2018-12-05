@@ -63,7 +63,7 @@ class CallInspectingObject
 
     public function fluentObjectMethod(): self
     {
-        if (!$this->nestedObject) {
+        if ($this->nestedObject === null) {
             $this->nestedObject = new self();
         }
 

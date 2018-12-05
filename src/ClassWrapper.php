@@ -62,7 +62,7 @@ final class ClassWrapper
 
     public function end(): self
     {
-        if (!$this->previous) {
+        if ($this->previous === null) {
             throw NoPreviousObject::create(get_class($this->object));
         }
 
