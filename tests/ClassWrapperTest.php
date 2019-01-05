@@ -55,7 +55,6 @@ class ClassWrapperTest extends TestCase
 
         $fluentObject = ClassWrapper::wrap($object);
 
-        /** @var ClassWrapper|CallInspectingObject $nestedFluentObject */
         $nestedFluentObject = $fluentObject->fluentObjectMethod();
 
         self::assertInstanceOf(ClassWrapper::class, $nestedFluentObject);
@@ -70,7 +69,6 @@ class ClassWrapperTest extends TestCase
     {
         $object = $this->getObject();
 
-        /** @var ClassWrapper|CallInspectingObject $nestedFluentObject */
         $fluentObject = ClassWrapper::wrap($object);
 
         $this->expectException(InvalidReturnValue::class);
@@ -90,13 +88,14 @@ class ClassWrapperTest extends TestCase
 
         $fluentObject = ClassWrapper::wrap($object);
 
-        /** @var ClassWrapper|CallInspectingObject $nestedFluentObject */
         $nestedFluentObject = $fluentObject->objectProperty;
 
-        self::assertInstanceOf(ClassWrapper::class, $nestedFluentObject);
+        self::assertNotNull($nestedFluentObject);
         self::assertSame($nestedFluentObject, $nestedFluentObject->voidMethod());
 
-        self::assertEquals([new MethodCall('voidMethod', [])], $object->objectProperty->getCalls());
+        $objectProperty = $object->objectProperty;
+        self::assertInstanceOf(CallInspectingObject::class, $objectProperty);
+        self::assertEquals([new MethodCall('voidMethod', [])], $objectProperty->getCalls());
 
         self::assertSame($fluentObject, $nestedFluentObject->end());
     }
@@ -105,7 +104,6 @@ class ClassWrapperTest extends TestCase
     {
         $object = $this->getObject();
 
-        /** @var ClassWrapper|CallInspectingObject $nestedFluentObject */
         $fluentObject = ClassWrapper::wrap($object);
 
         $this->expectException(InvalidReturnValue::class);
@@ -133,7 +131,7 @@ class ClassWrapperTest extends TestCase
             'integer'
         ));
 
-        $fluentObject->scalarProperty;
+        $fluentObject->scalarProperty->voidMethod();
     }
 
     private function getObject(): CallInspectingObject

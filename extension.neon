@@ -1,0 +1,6 @@
+services:
+  -
+    class: Alcaeus\Fluent\PHPStan\Type\ClassWrapperReturnTypeExtension
+    tags:
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+      - phpstan.broker.dynamicMethodReturnTypeExtension
